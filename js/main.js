@@ -19,7 +19,7 @@
     if (nav.classList.contains('is-open')) burger.click();
   }));
 
-  /* botão de marcação no ecrã tátil: o toque faz o efeito do hover e só depois abre a chamada */
+  /* botão de marcação no ecrã tátil: o toque faz o efeito do hover e só depois abre o WhatsApp */
   const bookBtn = document.querySelector('.btn-book');
   if (bookBtn && window.matchMedia('(hover: none)').matches) {
     let bookTimer;

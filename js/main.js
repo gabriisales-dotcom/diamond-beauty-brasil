@@ -12,12 +12,14 @@
     burger.setAttribute('aria-expanded', open);
     burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.classList.toggle('menu-open', open);
+    navScrolled();   // atualiza a theme-color para a cor do menu
   });
   nav.querySelectorAll('.nav__mobile a').forEach(a => a.addEventListener('click', () => {
     if (nav.classList.contains('is-open')) burger.click();
   }));
 
-  /* botão de marcação no ecrã tátil: o toque faz o efeito do hover e só depois abre a chamada */
+  /* botão de marcação no ecrã tátil: o toque faz o efeito do hover e só depois abre o WhatsApp */
   const bookBtn = document.querySelector('.btn-book');
   if (bookBtn && window.matchMedia('(hover: none)').matches) {
     let bookTimer;
@@ -37,7 +39,7 @@
   const themeColor = document.querySelector('meta[name="theme-color"]');
   const navScrolled = () => {
     const scrolled = nav.classList.toggle('is-scrolled', window.scrollY > 40);
-    themeColor.content = scrolled ? '#FBFAF8' : '#D8D7D5';
+    themeColor.content = nav.classList.contains('is-open') ? '#EDEAE5' : scrolled ? '#FBFAF8' : '#D8D7D5';
     document.body.classList.toggle('at-top', !scrolled);
   };
   window.addEventListener('scroll', navScrolled, { passive: true });
